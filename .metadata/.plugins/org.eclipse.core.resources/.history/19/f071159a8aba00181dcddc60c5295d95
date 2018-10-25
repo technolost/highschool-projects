@@ -1,0 +1,117 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Maze {
+	public Square[][] maze;
+	/**
+	 * default constructor
+	 */
+	Maze()
+	{
+		
+	}
+	/**
+	 * used to generate the maze using a file
+	 * @param fileName
+	 */
+	public boolean loadMaze(String fileName)
+	{
+		try
+		{
+			Scanner console = new Scanner(new File(fileName));
+			maze = new Square[console.nextInt()][console.nextInt()];
+			for (int i=0; i<maze.length;i++)
+			{
+				for (int j=0;j<maze[0].length;j++)
+				{
+					Square temp = new Square(i,j,console.nextInt());
+					maze[i][j] = temp;
+							
+				}
+			}
+		}
+		catch(IOException e)
+		{
+			System.out.println(e);
+			System.out.println("file not found");
+			return false;
+		}
+		
+		return true;
+	}
+	/**
+	 * used to get all the 
+	 * @param s
+	 * @return
+	 */
+	List<Square> getNeighbors(Square s)
+	{
+		ArrayList<Square> list = new ArrayList<>();
+		if (s.getRow()-1>=0)
+			list.add(maze[s.getRow()-1][s.getCol()]);
+		if (s.getCol()+1<maze[0].length)
+			list.add(maze[s.getRow()][s.getCol()+1]);
+		if (s.getRow()+1<maze.length)
+			list.add(maze[s.getRow()+1][s.getCol()]);
+		if (s.getCol()-1>=0)
+			list.add(maze[s.getRow()][s.getCol()-1]);
+		
+		
+		return list;
+	}
+	Square getStart()
+	{
+//		System.out.println(maze.length);
+		for(int i=0; i<maze.length;i++)
+		{
+			for (int j=0; j<maze[0].length;j++)
+			{
+				if(maze[i][j].getType()==Square.START)
+					return maze[i][j];
+			}
+		}
+		return null;
+	}
+	Square getExit()
+	{
+		for(int i=0; i<maze.length;i++)
+		{
+			for (int j=0; j<maze[0].length;j++)
+			{
+				if(maze[i][j].getType()==Square.EXIT)
+					return maze[i][j];
+			}
+		}
+		return null;
+	}
+	void reset()
+	{
+
+		for(int i=0; i<maze.length;i++)
+		{
+			for (int j=0; j<maze[0].length;j++)
+			{
+				
+					 maze[i][j].reset();;
+			}
+		}
+	}
+	@Override
+	public String toString()
+	{ 
+		String r = "";
+		for(int i=0; i<maze.length;i++)
+		{
+			for (int j=0; j<maze[0].length;j++)
+			{
+				
+					 r+=maze[i][j].toString()+" ";
+			}
+			r+="\n";
+		}
+		return r;
+	}
+}

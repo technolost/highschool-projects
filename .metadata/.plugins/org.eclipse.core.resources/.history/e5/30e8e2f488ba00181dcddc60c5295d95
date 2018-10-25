@@ -1,0 +1,60 @@
+
+public abstract class MazeSolver {
+	MyStack worklist;
+	protected Maze maze;
+	private boolean solvable ;
+	private boolean solved ;
+	MazeSolver(Maze maze)
+	{
+		this.maze = maze;
+		worklist = new MyStack();
+		worklist.push(maze.getStart());
+		solvable = true;
+		solved = false;
+	}
+	abstract void makeEmpty();
+	abstract boolean isEmpty();
+	abstract void add(Square s);
+	abstract Square next();
+	
+	boolean isSolved()
+	{
+		
+		return solved;
+	}
+	
+	public boolean isSolvable()
+	{
+		return solvable;
+		
+	}
+	public void Step()
+	{
+		if(isSolved())
+		{
+			solved =true;
+			solvable = false;
+			return;
+		}
+		
+		Square s = worklist.next();
+		if(maze.getExit().equals(s))
+		{
+			solvable = true;
+			solved = true;
+			return;
+		}
+		for (int i=0; i< maze.getNeighbors(worklist.peek()).size();i++)
+		{
+			if (maze.getNeighbors(worklist.peek()).get(i).getType() != Square.WALL && maze.getNeighbors(worklist.peek()).get(i).getStatus() != Square.EXPLORED)
+			{
+//				worklist.push(maze.getNeighbors(worklist.peek()).get(i));
+				
+			}
+			
+				
+		}
+	}
+	
+	
+}

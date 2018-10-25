@@ -1,0 +1,21 @@
+
+public class Runner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Maze test  =new Maze();
+//		test.loadMaze("maze-2");
+//		System.out.println(test);
+//		System.out.println(test.getStart().getRow()+" "+test.getStart().getCol());
+//		System.out.println(test.getExit().getRow()+" "+test.getExit().getCol());
+//		System.out.println(test.getNeighbors(test.getStart()));
+		 MyStack mine = new MyStack();
+		 mine.push(new Square(0,0,0));
+		 mine.push(new Square(1,0,1));
+		 mine.push(new Square(2,0,0));
+		 System.out.println(mine);
+		 mine.clear();
+		 System.out.println(mine);
+	}
+
+}

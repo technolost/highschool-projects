@@ -1,0 +1,90 @@
+
+public abstract class MazeSolver {
+	MyStack worklist;
+	protected Maze maze;
+	private boolean solvable ;
+	private boolean solved ;
+	MazeSolver(Maze maze)
+	{
+		this.maze = maze;
+		worklist = new MyStack();
+		if(maze != null)
+		{
+			worklist.push(maze.getStart());
+		}
+		solvable = true;
+		solved = false;
+	}
+	abstract void makeEmpty();
+	abstract boolean isEmpty();
+	abstract void add(Square s);
+	abstract Square next();
+	
+	boolean isSolved()
+	{
+		
+		return solved;
+	}
+	
+	public boolean isSolvable()
+	{
+		return solvable;
+		
+	}
+	public void Step()
+	{
+		if(isSolved())
+		{
+			solved =true;
+			solvable = false;
+			return;
+		}
+		
+		Square s = this.next();
+		if(maze.getExit().equals(s))
+		{
+			solvable = true;
+			solved = true;
+			return;
+		}
+		//adding the neighbors to the worklist
+		for (int i=0; i< maze.getNeighbors(worklist.peek()).size();i++)
+		{
+			if (maze.getNeighbors(worklist.peek()).get(i).getType() != Square.WALL && maze.getNeighbors(worklist.peek()).get(i).getStatus() != Square.EXPLORED)
+			{
+				worklist.push(maze.getNeighbors(worklist.peek()).get(i));
+				
+			}
+			
+			s.setStatus(Square.EXPLORED);	
+		}
+		
+		
+		
+	}
+	public String getPath()
+	{
+		
+		if(this.solved && this.solvable)
+			return "maze solved!";
+		else if (this.solvable)
+			return "this has no solution!";
+		else
+			return "maze not yet solved";
+	}
+	public void reset()
+	{
+		this.makeEmpty();
+		this.add(this.maze.getStart());
+		this.solved = false;
+		this.solvable = true;
+		this.maze.reset();//removes maze markings;
+	}
+	public void solve()
+	{
+		while(solved != true)
+			this.Step();
+	}
+	
+	
+}

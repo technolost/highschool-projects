@@ -1,0 +1,88 @@
+
+public class Square {
+	public static final int SPACE=0;
+	public static final int WALL =1;
+	public static final int START=2;
+	public static final int EXIT =3;
+	
+	private int type;//stores the type of square(space, wall, start, end)
+	private int row;//x location of the square
+	private int col;//y location of the square
+	private char status;// variable to store whether the square is explored or not
+	final static char WORKING = 'o'; //currently on the work list (the stack) 
+	final static char EXPLORED = '.'; //done, already explored 
+	final static char ON_EXIT_PATH = 'x'; //on the exit path, used in a later lab 
+	final static char UNKNOWN = '_'; //not known / visited yet (empty cells only) 
+	
+	public Square(int row, int col, int type)
+	{
+		this.row = row;
+		this.col = col;
+		this.type = type;
+		if (type == SPACE)
+			status = UNKNOWN;  
+	}
+	/**
+	 * returns the type of the square
+	 */
+	@Override
+	public String toString()
+	{
+		if (type==SPACE)
+			return status+"";
+		if (type==START)
+			return "S";
+		if (type == EXIT)
+			return "E";
+		return "#";
+	}
+	/**
+	 * checks whether the squares are at the same location
+	 */
+	@Override
+	public
+	boolean equals(Object obj)
+	{
+		if (this.col==((Square)obj).col && this.row==((Square)obj).row  )
+			return true;
+					
+		return false;
+	}
+	/**
+	 * @return the type
+	 */
+	public int getType() {
+		return type;
+	}
+	
+	/**
+	 * @return the row
+	 */
+	public int getRow() {
+		return row;
+	}
+	
+	/**
+	 * @return the col
+	 */
+	public int getCol() {
+		return col;
+	}
+	
+	/**
+	 * @return the status
+	 */
+	public char getStatus() {
+		return status;
+	}
+	public void reset()
+	{
+		if(type==SPACE)
+		{
+			status = UNKNOWN;
+		}
+	}
+	
+	
+	
+}
