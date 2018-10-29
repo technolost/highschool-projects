@@ -1,0 +1,60 @@
+
+
+public class MyLinkedList {
+	ListNode head;
+	private  class ListNode
+	{
+		int val;
+		ListNode next;
+		public ListNode(int val) {this.val = val;}
+		@Override
+		public String toString() {return ""+this.val;}
+	}
+	public MyLinkedList() {
+		// TODO Auto-generated constructor stub
+		head = null;
+	}
+	public MyLinkedList(int val)
+	{
+		head = new ListNode(val);
+	}
+	void add(int newval)
+	{
+		if (head==null)
+		{
+			head = new ListNode(newval);
+		}
+		else
+		{
+			ListNode temp = head;
+			boolean end = false;
+			while(!end)
+			{
+				if (temp.next==null)
+				{
+					temp.next  = new ListNode(newval);
+					end = true;
+				}
+				else
+					temp = temp.next;
+			}	
+		}
+	}
+	//	@Override
+	//	public String toString()
+	//	{
+	//		String res = "[";
+	//		ListNode temp = head;
+	//
+	//		while(temp.next==null && temp!= null)
+	//		{
+	//			
+	//				res += temp.val+",";
+	//				temp = temp.next;
+	//			
+	//		}
+	//		res+="]";
+	//		return res;
+	//				
+	//	}
+}
