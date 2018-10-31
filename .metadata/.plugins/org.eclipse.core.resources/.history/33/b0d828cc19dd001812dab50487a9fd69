@@ -6,7 +6,7 @@ public class Runner
 		MyLinkedList b = new MyLinkedList(20);
 
 		System.out.println(a); //test no-parameter constructor and toString() method, should be []
-		//System.out.println(a.isEmpty());
+		System.out.println(a.isEmpty());
 		System.out.println(b); //test parameterized constructor and toString() method, should be [20]
 
 		MyLinkedList list = new MyLinkedList();
@@ -28,16 +28,15 @@ public class Runner
 		System.out.println(list.size()); //is size still working? should be 7
 		//System.out.println(list.sizeRecursive(list.head));
 		//		
-				System.out.println(list.remove(1)); //test remove() method, removes at index 1, not the first value 1
-			System.out.println(list);
+		//		list.remove(1); //test remove() method, removes at index 1, not the first value 1
+		//		System.out.println(list);
 		//		
-				list.add(1000, 2); //test two parameter add() method
-			System.out.println(list); 
+		//		list.add(1000, 2); //test two parameter add() method
+		//		System.out.println(list); 
 		//		
-				while (!list.isEmpty()) { //test isEmpty() and remove() methods
-					System.out.print(list.remove(0) + " "); //should print list in order
-					//System.out.println(list);
-				}
+		//		while (!list.isEmpty()) { //test isEmpty() and remove() methods
+		//			System.out.print(list.remove(0) + " "); //should print list in order
+		//		}
 		//		
 		//		System.out.println("\n" + list.size()); //test size() method, should be back to 0
 	}

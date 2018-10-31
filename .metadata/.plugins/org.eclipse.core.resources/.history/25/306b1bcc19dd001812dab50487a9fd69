@@ -2,9 +2,6 @@
 
 public class MyLinkedList {
 	ListNode head;
-	ListNode tail;
-	
-	
 	private  class ListNode
 	{
 		int val;
@@ -13,41 +10,38 @@ public class MyLinkedList {
 		@Override
 		public String toString() {return ""+this.val;}
 	}
-	
-	
 	public MyLinkedList() {
 		// TODO Auto-generated constructor stub
 		head = null;
-		tail = null;
 	}
-	
-	
 	public MyLinkedList(int val)
 	{
 		head = new ListNode(val);
-		tail = head;
 	}
-	
-	
 	void add(int newval)
 	{
 		if (head==null)
 		{
 			head = new ListNode(newval);
-			tail = head;
 		}
 		else
 		{
-			tail.next = new ListNode(newval);
-			tail = tail.next;
+			ListNode temp = head;
+			boolean end = false;
+			while(!end)
+			{
+				if (temp.next==null)
+				{
+					temp.next  = new ListNode(newval);
+					end = true;
+				}
+				else
+					temp = temp.next;
+			}	
 			
-				
-
 		}
 		//System.out.println(head.val);
 	}
-	
-	
 	boolean contains(int target)
 	{
 		if (head!=null)
@@ -67,12 +61,10 @@ public class MyLinkedList {
 				else
 					temp = temp.next;
 			}
-
+					
 		}
 		return false;
 	}
-	
-	
 	int get(int index)
 	{
 		int count = 0;
@@ -80,24 +72,22 @@ public class MyLinkedList {
 		boolean end = false;
 		while(!end)
 		{
-
-
-			if (count == index)
-			{
-				return temp.val;
-			}
-
-
-			if (temp.next==null || index<0)
-				throw new IndexOutOfBoundsException();
-			temp = temp.next;
-			count++;
-
+			
+			
+				if (count == index)
+				{
+					return temp.val;
+				}
+				
+				
+				if (temp.next==null || index<0)
+					throw new IndexOutOfBoundsException();
+				temp = temp.next;
+				count++;
+			
 		}
 		return 0;
 	}
-	
-	
 	int indexOf(int target)
 	{
 		int count = 0;
@@ -117,11 +107,9 @@ public class MyLinkedList {
 			temp = temp.next;
 			count++;
 		}
-
+		
 		return -1;
 	}
-	
-	
 	void set(int newval, int index)
 	{
 		int count = 0;
@@ -129,25 +117,23 @@ public class MyLinkedList {
 		boolean end = false;
 		while(!end)
 		{
-
-
-			if (count == index)
-			{
-				end = true;
-				temp.val = newval ;
-			}
-
-
-			if (temp.next==null || index<0)
-				throw new IndexOutOfBoundsException();
-			temp = temp.next;
-			count++;
-
+			
+			
+				if (count == index)
+				{
+					end = true;
+					temp.val = newval ;
+				}
+				
+				
+				if (temp.next==null || index<0)
+					throw new IndexOutOfBoundsException();
+				temp = temp.next;
+				count++;
+			
 		}
-
+		
 	}
-	
-	
 	int size()
 	{
 		if (head==null)
@@ -167,12 +153,10 @@ public class MyLinkedList {
 				count++;
 			}
 		}
-
+		
 		return -1;
 		//return 0;
 	}
-	
-	
 	int sizeRecursive(ListNode temp)
 	{
 		if (head==null)
@@ -188,73 +172,36 @@ public class MyLinkedList {
 		}
 		return count;
 	}
-	
-	
 	boolean isEmpty()
 	{
 		if (this.size()==0)
 		{
 			return true;
 		}
-
+					
 		return false;
 	}
-
-	int remove(int index)
-	{
-		if (index>this.size())
-			throw new ArrayIndexOutOfBoundsException();
-		ListNode temp = head;
-		int val = temp.val; 
-		for (int i=0; i<index-1; i++)
+		@Override
+		public String toString()
 		{
-			temp = temp.next;
-			//val = temp.val;
+			if(head==null)
+			{
+				return "[]";
+			}
+			String res = "[";
+			//System.out.println(head);
+			ListNode temp = head;
+	
+			while(temp.next!=null)
+			{
+				
+					res += temp.val+", ";
+					temp = temp.next;
+				
+			}
+		
+			res+=temp.val+"]";
+			return res;
+					
 		}
-		if (index == 0)
-		{
-			head = temp.next;
-		}
-		else
-		{
-			val = temp.next.val;
-			temp.next = temp.next.next;
-		}
-		return val;
-	}
-	void add(int newval, int index)
-	{
-		ListNode temp = head;
-		ListNode temp2 = temp.next;
-		for(int i=0; i<index-1;i++)
-		{
-			temp = temp.next;
-			temp2 = temp.next;
-		}
-		temp.next = new ListNode(newval);
-		temp.next.next = temp2;
-	}
-	@Override
-	public String toString()
-	{
-		if(head==null)
-		{
-			return "[]";
-		}
-		String res = "[";
-		//System.out.println(head);
-		ListNode temp = head;
-
-		while(temp.next!=null)
-		{
-
-			res += temp.val+", ";
-			temp = temp.next;
-
-		}
-
-		res+=temp.val+"]";
-		return res;
-
-	}
 }

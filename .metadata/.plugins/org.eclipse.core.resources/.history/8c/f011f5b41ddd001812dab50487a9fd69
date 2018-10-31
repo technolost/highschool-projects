@@ -34,7 +34,6 @@ public class MyLinkedList {
 		if (head==null)
 		{
 			head = new ListNode(newval);
-			tail = head;
 		}
 		else
 		{

@@ -2,7 +2,6 @@
 
 public class MyLinkedList {
 	ListNode head;
-	ListNode tail;
 	
 	
 	private  class ListNode
@@ -18,14 +17,12 @@ public class MyLinkedList {
 	public MyLinkedList() {
 		// TODO Auto-generated constructor stub
 		head = null;
-		tail = null;
 	}
 	
 	
 	public MyLinkedList(int val)
 	{
 		head = new ListNode(val);
-		tail = head;
 	}
 	
 	
@@ -34,14 +31,21 @@ public class MyLinkedList {
 		if (head==null)
 		{
 			head = new ListNode(newval);
-			tail = head;
 		}
 		else
 		{
-			tail.next = new ListNode(newval);
-			tail = tail.next;
-			
-				
+			ListNode temp = head;
+			boolean end = false;
+			while(!end)
+			{
+				if (temp.next==null)
+				{
+					temp.next  = new ListNode(newval);
+					end = true;
+				}
+				else
+					temp = temp.next;
+			}	
 
 		}
 		//System.out.println(head.val);
@@ -205,34 +209,14 @@ public class MyLinkedList {
 		if (index>this.size())
 			throw new ArrayIndexOutOfBoundsException();
 		ListNode temp = head;
-		int val = temp.val; 
+		int val = temp.next.val; 
 		for (int i=0; i<index-1; i++)
 		{
 			temp = temp.next;
-			//val = temp.val;
-		}
-		if (index == 0)
-		{
-			head = temp.next;
-		}
-		else
-		{
 			val = temp.next.val;
-			temp.next = temp.next.next;
 		}
+		temp.next = temp.next.next;
 		return val;
-	}
-	void add(int newval, int index)
-	{
-		ListNode temp = head;
-		ListNode temp2 = temp.next;
-		for(int i=0; i<index-1;i++)
-		{
-			temp = temp.next;
-			temp2 = temp.next;
-		}
-		temp.next = new ListNode(newval);
-		temp.next.next = temp2;
 	}
 	@Override
 	public String toString()
