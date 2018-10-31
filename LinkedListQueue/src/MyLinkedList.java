@@ -27,7 +27,10 @@ public class MyLinkedList {
 		head = new ListNode(val);
 		tail = head;
 	}
-	
+	public MyLinkedList(int... val)
+	{
+		
+	}
 	
 	void add(int newval)
 	{

@@ -34,6 +34,7 @@
 <fullyQualifiedTypeName name="StdDraw"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="MyLinkedList"/>
-<fullyQualifiedTypeName name="MyLinkedList.ListNode"/>
 <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+<fullyQualifiedTypeName name="MyLinkedList.ListNode"/>
 </qualifiedTypeNameHistroy>
