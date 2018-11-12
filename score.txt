@@ -1,0 +1,47 @@
+
+		int score = 0;
+		int tempScore=0;
+		int sequance = 0;
+		GemType type = null;
+		Node temp = first;
+		if (size==0)
+			return 0;
+		else
+		{
+			for(int i=0; i<size;i++)
+			{
+				if(temp.gem.type == type && type!= null)
+				{
+					tempScore+=temp.gem.points;
+					sequance++;
+					if (temp.next == null || temp.next.gem.type != type)
+					{
+						tempScore = tempScore*sequance;
+						sequance=0;
+						score+=tempScore;
+						tempScore = 0;
+					}
+					temp = temp.next;
+				}
+				
+				else
+				{
+					type = temp.gem.type;
+					//System.out.println(type);
+					sequance++;
+					tempScore = temp.gem.points;
+					if (temp.next != null && temp.next.gem.type == type)
+					{
+						temp = temp.next;
+					}
+					else
+					{
+						score+=tempScore;
+						sequance=0;
+						//tempScore = 0;
+						temp = temp.next;
+					}
+				}
+			}
+		}
+		return score;

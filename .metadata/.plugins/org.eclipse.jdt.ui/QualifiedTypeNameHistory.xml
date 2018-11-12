@@ -30,11 +30,13 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="GuitarHero"/>
 <fullyQualifiedTypeName name="GuitarString"/>
-<fullyQualifiedTypeName name="java.lang.Thread"/>
-<fullyQualifiedTypeName name="StdDraw"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="MyLinkedList"/>
 <fullyQualifiedTypeName name="java.lang.IndexOutOfBoundsException"/>
 <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
 <fullyQualifiedTypeName name="MyLinkedList.ListNode"/>
+<fullyQualifiedTypeName name="StdDraw"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="GemList.Node"/>
+<fullyQualifiedTypeName name="GemType"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
 </qualifiedTypeNameHistroy>
