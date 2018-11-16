@@ -1,5 +1,5 @@
 /*************************************************************************
- * Name        : Keith Vertanen 
+ 
  * Username    : kvertanen
  * Description : Gem Matching game.  Two players alternate choosing 
  *               where to place the next gem.  Blocks of the same color
